@@ -264,7 +264,7 @@ if option==menu[2]:
             cate2=st.selectbox('Sort by?',options=['Sin','Type'])
             total_cate=cate1+' '+cate2
             df_group = id_df.value_counts(total_cate, sort=False).to_frame().reset_index()
-            # df_group = df_group.rename(columns={0: 'ids'})
+            
             st.dataframe(df_group)
             labels = df_group.apply(lambda x: str(x.iloc[0]) + ': ' + str(x.iloc[1]), axis=1)
             plt.figure(figsize=(12, 7))
@@ -275,10 +275,10 @@ if option==menu[2]:
         with st.expander('See more...'):
             cat=st.selectbox('Sort by?',options=['Season','Rarity','Sinner'])
             df_grouper = id_df.value_counts(cat, sort=False).to_frame().reset_index()
-            df_grouper = df_grouper.rename(columns={0: 'id'})
+            
             labelss = df_grouper.apply(lambda x: str(x[0]) + ': ' + str(x[1]), axis=1)
             plt.figure(figsize=(12, 7))
-            sqr.plot(sizes=df_grouper['id'], label=labelss, color=sns.color_palette('YlOrRd',10))
+            sqr.plot(sizes=df_grouper['count'], label=labelss, color=sns.color_palette('YlOrRd',10))
             plt.title(f'Number of Identites sort by {cat}')
             plt.axis('off')
             st.pyplot()
@@ -294,10 +294,10 @@ if option==menu[2]:
         with st.expander('See more...'):
             cag=st.selectbox('Sort by?',options=['Season','Tier','Sinner','Version','Sin','Type','Sanity Cost'])
             df_groupers = ego_df.value_counts(cag, sort=False).to_frame().reset_index()
-            df_groupers = df_groupers.rename(columns={0: 'ego'})
+            
             labe = df_groupers.apply(lambda x: str(x[0]) + ': ' + str(x[1]), axis=1)
             plt.figure(figsize=(12, 7))
-            sqr.plot(sizes=df_groupers['ego'], label=labe, color=sns.color_palette('RdPu',10))
+            sqr.plot(sizes=df_groupers['count'], label=labe, color=sns.color_palette('RdPu',10))
             plt.title(f'Number of E.G.Os sort by {cag}')
             plt.axis('off')
             st.pyplot()
