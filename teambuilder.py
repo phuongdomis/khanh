@@ -268,7 +268,7 @@ if option==menu[2]:
             st.dataframe(df_group)
             labels = df_group.apply(lambda x: str(x.iloc[0]) + ': ' + str(x.iloc[1]), axis=1)
             plt.figure(figsize=(12, 7))
-            sqr.plot(sizes=df_group[0], label=labels, color=sns.color_palette('GnBu'))
+            sqr.plot(sizes=df_group['count'], label=labels, color=sns.color_palette('GnBu'))
             plt.title(f'Number of {cate1} sort by {cate2}')
             plt.axis('off')
             st.pyplot()
